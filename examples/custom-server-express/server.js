@@ -1,4 +1,3 @@
-const bodyParser = require('body-parser');
 const express = require('express');
 const { bottender } = require('bottender');
 
@@ -20,8 +19,8 @@ app.prepare().then(() => {
   const verify = (req, _, buf) => {
     req.rawBody = buf.toString();
   };
-  server.use(bodyParser.json({ verify }));
-  server.use(bodyParser.urlencoded({ extended: false, verify }));
+  server.use(server.json({ verify }));
+  server.use(server.urlencoded({ extended: false, verify }));
 
   server.get('/api', (req, res) => {
     res.json({ ok: true });
